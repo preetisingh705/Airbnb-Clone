@@ -15,11 +15,10 @@ const flash = require("connect-flash");
 const passport= require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-const Listing = require("./models/listing.js");
+
 const reviewRouter = require("./routes/review.js");
 const listingRouter = require("./routes/listing.js");
 const userRouter = require("./routes/user.js");
-const wrapAsycn = require('./utils/wrapAsycn.js');
 
 const dbUrl = process.env.ATLASDB_URL;
 
@@ -68,10 +67,11 @@ const sessionOptions = {
     },
 };
 
-app.get("/", wrapAsycn (async (req,res)=> {
-    const allListings = await Listing.find({});
-    res.render("index.ejs", {allListings});
-}));
+// app.get("/", (req,res)=> {
+//     res.send("Hi , I am root");
+// });
+
+
 
 
 app.use(session(sessionOptions));
