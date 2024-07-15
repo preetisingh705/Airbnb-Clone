@@ -37,7 +37,7 @@
   "axios": "^1.7.2",
   
     
-  "cloudinary": "^2.2.0",
+  "cloudinary": "^4.0.0",
   
     
   "connect-flash": "^0.1.1",
