@@ -15,7 +15,6 @@ const flash = require("connect-flash");
 const passport= require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-
 const reviewRouter = require("./routes/review.js");
 const listingRouter = require("./routes/listing.js");
 const userRouter = require("./routes/user.js");
@@ -67,12 +66,6 @@ const sessionOptions = {
     },
 };
 
-// app.get("/", (req,res)=> {
-//     res.send("Hi , I am root");
-// });
-
-
-
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -90,9 +83,11 @@ app.use((req,res,next) => {
     next();
 });
 
+// app.use("/",listingRouter);
+app.use("/", listingRouter);
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
-app.use("/",userRouter);
+app.use("/user",userRouter);
 
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page not found"));
