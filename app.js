@@ -55,7 +55,6 @@ store.on("error", () => {
   console.log("Error in Mongo Session Store",err);  
 });
 
-
 const sessionOptions = {
     store,
     secret: process.env.SECRET,
